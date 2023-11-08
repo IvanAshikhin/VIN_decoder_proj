@@ -111,7 +111,6 @@ DATABASES = {
 }
 AUTH_USER_MODEL = 'users.User'
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -157,3 +156,12 @@ CACHES = {
         "LOCATION": "unique-snowflake",
     }
 }
+LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ashikhinivan18@gmail.com'
+EMAIL_HOST_PASSWORD = 'rcfjfcfzzzrjgoze'
+DEFAULT_FROM_EMAIL = 'ashikhinivan18@gmail.com'
