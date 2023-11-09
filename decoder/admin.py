@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Country, CountryCode, ProductionYear, YearCode, Mark, CarMark
+from .models import Country, CountryCode, ProductionYear, YearCode, Mark, MarkCode, Model
 
 
 @admin.register(CountryCode)
@@ -24,9 +24,14 @@ class ProductionYearAdmin(admin.ModelAdmin):
 
 @admin.register(Mark)
 class MarkAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'code')
 
 
-@admin.register(CarMark)
-class CarMarkAdmin(admin.ModelAdmin):
-    list_display = ('name', 'mark')
+@admin.register(MarkCode)
+class MarkCode(admin.ModelAdmin):
+    list_display = ('code',)
+
+
+@admin.register(Model)
+class ModelAdmin(admin.ModelAdmin):
+    list_display = ('name', 'mark', 'code')
