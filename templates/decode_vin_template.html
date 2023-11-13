@@ -1,0 +1,18 @@
+<!-- decode_vin_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decode VIN</title>
+</head>
+<body>
+<h2>Decode VIN</h2>
+
+<form method="post" action="{% url 'decode_vin' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Decode</button>
+</form>
+</body>
+</html>

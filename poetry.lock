@@ -248,7 +248,21 @@ files = [
     {file = "tzdata-2023.3.tar.gz", hash = "sha256:11ef1e08e54acb0d4f95bdb1be05da659673de4acbd21bf9c69e94cc5e907a3a"},
 ]
 
+[[package]]
+name = "vininfo"
+version = "1.7.0"
+description = "Extracts useful information from Vehicle Identification Number (VIN)"
+optional = false
+python-versions = "*"
+files = [
+    {file = "vininfo-1.7.0-py2.py3-none-any.whl", hash = "sha256:9e44cfd24704d42f0ae1d6ef18f157d2a73442d0901dd8ac590763b3d5cf3f1c"},
+    {file = "vininfo-1.7.0.tar.gz", hash = "sha256:61a3a2c31af2e5b5b38002954be033d3a69164e7ea0bf438df6b3778a278717e"},
+]
+
+[package.extras]
+cli = ["click"]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "27fe153f4b05e2a83f59580e51be6ad691bb09164cf51290238684636c2de3a8"
+content-hash = "7e1e541545c19f2d1247d514560c8ddeac51c14e6cdbe1aaaa7f84c1cd7fee85"

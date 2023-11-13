@@ -1,37 +1,33 @@
 from django.contrib import admin
-from .models import Country, CountryCode, ProductionYear, YearCode, Mark, MarkCode, Model
+
+from decoder.models import Region, Country, Year, Manufacturer, Brand, Car
 
 
-@admin.register(CountryCode)
-class CountryCodeAdmin(admin.ModelAdmin):
-    list_display = ('code',)
+@admin.register(Region)
+class RegionAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'code')
+    list_display = ('name',)
 
 
-@admin.register(YearCode)
+@admin.register(Manufacturer)
+class ManufacturerAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
+@admin.register(Year)
 class YearCodeAdmin(admin.ModelAdmin):
-    list_display = ('code',)
+    list_display = ('year',)
 
 
-@admin.register(ProductionYear)
-class ProductionYearAdmin(admin.ModelAdmin):
-    list_display = ('year', 'code')
-
-
-@admin.register(Mark)
-class MarkAdmin(admin.ModelAdmin):
-    list_display = ('name', 'code')
-
-
-@admin.register(MarkCode)
-class MarkCode(admin.ModelAdmin):
-    list_display = ('code',)
-
-
-@admin.register(Model)
-class ModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'mark', 'code')
+@admin.register(Car)
+class CarAdmin(admin.ModelAdmin):
+    list_display = ('vin_code',)

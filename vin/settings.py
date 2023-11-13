@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'vin.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "vin_decoder1",
+        "NAME": "vin_checker_database",
         "USER": "postgres",
         "PASSWORD": "5625",
         "HOST": "localhost",
