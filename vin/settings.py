@@ -35,16 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'users',
     'rest_framework',
     'rest_framework_simplejwt',
     'decoder',
-    'api'
+    'api',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework.permissions.IsAuthenticated',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
