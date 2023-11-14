@@ -9,7 +9,7 @@
 <body>
 <h2>Decode VIN</h2>
 
-<form method="post" action="{% url 'decode_vin' %}">
+<form method="post" action="{% url 'new_decode_vin' user_id=user.id %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Decode</button>

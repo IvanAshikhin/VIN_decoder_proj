@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import decode_vin
+from .views import new_decode_vin
 
 urlpatterns = [
-    path('decode/', decode_vin, name='decode_vin'),
+    path('new_decode/<int:user_id>/', new_decode_vin, name='new_decode_vin'),
 ]

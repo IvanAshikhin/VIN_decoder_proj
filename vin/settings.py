@@ -35,18 +35,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_yasg',
     'users',
     'rest_framework',
     'rest_framework_simplejwt',
     'decoder',
     'api',
+    'drf_spectacular',
+
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+SPECTACULAR_SETTINGS = {
+    'SWAGGER_UI_SETTINGS': {
+        'docExpansion': 'list',
+    },
+    "TITLE": "VIN Decoder",
+    "DESCRIPTION": "Your project description",
+    "CONTACT": "ashikhinivan18@gmail.com",
+    "VERSION": "0.0.1",
+    "SORT_OPERATION_PARAMETERS": False,
+    "TAGS": [],
 }
 
 SIMPLE_JWT = {
@@ -159,6 +173,7 @@ CACHES = {
     }
 }
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/decoder/new_decode/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True

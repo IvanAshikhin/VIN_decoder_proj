@@ -4,7 +4,7 @@ from .models import Car, Region, Country, Manufacturer, Brand, Year
 from vininfo import Vin
 
 
-def decode_vin(request):
+def new_decode_vin(request, user_id):
     form = VinDecodeForm(request.POST or None)
 
     if request.method == 'POST' and form.is_valid():
@@ -28,6 +28,6 @@ def decode_vin(request):
                 year=year
             )
 
-        return render(request, 'success_template.html', {'car': car})
+        return render(request, 'success_template.html', {'car': car, 'user_id': user_id})
 
-    return render(request, 'decode_vin_template.html', {'form': form})
+    return render(request, 'decode_vin_template.html', {'form': form, 'user_id': user_id})

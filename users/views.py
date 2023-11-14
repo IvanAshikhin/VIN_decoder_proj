@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.urls import reverse
 from rest_framework.decorators import api_view
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.shortcuts import render, redirect
@@ -20,20 +21,9 @@ def login_user(request):
                 cache.delete(user.email + '_failed_login_attempts')
             login(request, user)
             refresh = RefreshToken.for_user(user)
-            request.session['access_token'] = str(refresh.access_token)
             request.session['refresh_token'] = str(refresh)
-            return redirect('tokens', user_id=user.id)
+            access_token = str(refresh.access_token)
+            request.session['access_token'] = access_token
+            return redirect('new_decode_vin', user_id=user.id)
 
     return render(request, 'login.html')
-
-
-@api_view(['GET'])
-def tokens(request, user_id):
-    access_token = request.session.get('access_token')
-    refresh_token = request.session.get('refresh_token')
-
-    context = {
-        'access_token': access_token,
-        'refresh_token': refresh_token
-    }
-    return render(request, 'main.html', context)
