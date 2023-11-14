@@ -41,8 +41,14 @@ INSTALLED_APPS = [
     'decoder',
     'api',
     'drf_spectacular',
+    'sslserver'
 
 ]
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+SSL_CERTIFICATE = './localhost.crt'
+SSL_PRIVATE_KEY = './localhost.key'
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',

@@ -56,6 +56,19 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-sslserver"
+version = "0.22"
+description = "An SSL-enabled development server for Django"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django_sslserver-0.22-py3-none-any.whl", hash = "sha256:c598a363d2ccdc2421c08ddb3d8b0973f80e8e47a3a5b74e4a2896f21c2947c5"},
+]
+
+[package.dependencies]
+Django = ">=1.8"
+
+[[package]]
 name = "djangorestframework"
 version = "3.14.0"
 description = "Web APIs for Django, made easy."
@@ -546,4 +559,4 @@ cli = ["click"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "fd69c585f450286aa003e657f2bbf2c54b3f1c98734598cee4613d959d9fd6e5"
+content-hash = "4ecf8a044c994658cc863042d3de64f21f6866523b6a290362c709f85ed7b65a"
