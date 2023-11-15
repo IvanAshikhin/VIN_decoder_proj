@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from vininfo import Vin
 from decoder.models import Region, Country, Manufacturer, Brand, Year, Car
 from .serializers import CarSerializer
-from drf_spectacular.utils import extend_schema, OpenApiExample
+from drf_spectacular.utils import extend_schema
 
 
 class DecodeVinAPIView(APIView):

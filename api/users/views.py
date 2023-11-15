@@ -1,9 +1,22 @@
-from rest_framework import status
-from rest_framework.permissions import AllowAny
+from rest_framework import status, viewsets
+from rest_framework.permissions import AllowAny, DjangoModelPermissions, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from api.users.serializers import LoginSerializer, RegistrationSerializer
+from users.models import User
+
+
+class UserAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return User.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        users = self.get_queryset()
+        serializer = RegistrationSerializer(users, many=True)
+        return Response(serializer.data)
 
 
 class LoginUserView(APIView):
@@ -19,11 +32,12 @@ class LoginUserView(APIView):
         access_token = str(refresh.access_token)
         refresh_token = str(refresh)
 
-        response = Response(status=status.HTTP_200_OK)
-        response['Authorization'] = f'Bearer {access_token}'
-        response['X-Refresh-Token'] = refresh_token
+        response_data = {
+            'access_token': access_token,
+            'refresh_token': refresh_token,
+        }
 
-        return response
+        return Response(data=response_data, status=status.HTTP_200_OK)
 
 
 class RegisterUserView(APIView):
