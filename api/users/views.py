@@ -1,16 +1,20 @@
-from rest_framework import status, viewsets
-from rest_framework.permissions import AllowAny, DjangoModelPermissions, IsAuthenticated
+from rest_framework import status
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from api.users.serializers import LoginSerializer, RegistrationSerializer
 from users.models import User
+import logging
+
+logger = logging.getLogger('main')
 
 
 class UserAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        logging.info('helloooo')
         return User.objects.all()
 
     def get(self, request, *args, **kwargs):

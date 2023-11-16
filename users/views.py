@@ -1,5 +1,4 @@
 from django.contrib.auth import login
-from django.urls import reverse
 from rest_framework.decorators import api_view
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.shortcuts import render, redirect
@@ -25,5 +24,4 @@ def login_user(request):
             access_token = str(refresh.access_token)
             request.session['access_token'] = access_token
             return redirect('new_decode_vin', user_id=user.id)
-
     return render(request, 'login.html')

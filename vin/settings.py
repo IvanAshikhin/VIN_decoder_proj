@@ -188,3 +188,38 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ashikhinivan18@gmail.com'
 EMAIL_HOST_PASSWORD = 'rcfjfcfzzzrjgoze'
 DEFAULT_FROM_EMAIL = 'ashikhinivan18@gmail.com'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'main_format': {
+            'format': "{asctime} - {levelname} - {module} - {filename} - {message} ",
+            'style': "{",
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_format',
+        },
+        'file': {
+            "class": "logging.FileHandler",
+            "formatter": "main_format",
+            "filename": "app.log"
+        },
+    },
+    'loggers': {
+        'main': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'root': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    },
+
+}
