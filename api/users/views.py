@@ -14,7 +14,7 @@ class UserAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        logging.info('helloooo')
+        logging.error('Error here')
         return User.objects.all()
 
     def get(self, request, *args, **kwargs):

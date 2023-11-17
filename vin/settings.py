@@ -24,7 +24,7 @@ VERIFYING_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -41,14 +41,14 @@ INSTALLED_APPS = [
     'decoder',
     'api',
     'drf_spectacular',
-    'sslserver'
+    # 'sslserver'
 
 ]
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-SSL_CERTIFICATE = './localhost.crt'
-SSL_PRIVATE_KEY = './localhost.key'
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# SSL_CERTIFICATE = './localhost.crt'
+# SSL_PRIVATE_KEY = './localhost.key'
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
@@ -124,11 +124,11 @@ WSGI_APPLICATION = 'vin.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "vin_checker_database",
+        "NAME": "vin_cod",
         "USER": "postgres",
         "PASSWORD": "5625",
-        "HOST": "localhost",
-        "PORT": "",
+        'HOST': 'db',
+        "PORT": "5432",
     }
 }
 AUTH_USER_MODEL = 'users.User'
@@ -164,7 +164,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = 'static/'
 
 # Default primary key field type
@@ -212,12 +212,12 @@ LOGGING = {
     },
     'loggers': {
         'main': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': True,
         },
         'root': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'INFO',
         },
     },
