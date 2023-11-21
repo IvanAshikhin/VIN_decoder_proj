@@ -9,10 +9,10 @@
 </head>
 <body>
 <h2 class="header_class">Decode VIN</h2>
-    <form method="post" action="{% url 'new_decode_vin' user_id=user.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Decode</button>
-    </form>
+<form method="post" action="{% url 'new_decode_vin' user_id=user.id %}"></form>
+{{ form.as_p }}
+<button type="submit">Decode</button>
+</form>
+{% csrf_token %}
 </body>
 </html>
