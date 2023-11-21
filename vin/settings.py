@@ -124,11 +124,11 @@ WSGI_APPLICATION = 'vin.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "vin_cod",
-        "USER": "postgres",
-        "PASSWORD": "5625",
-        'HOST': 'db',
-        "PORT": "5432",
+        "NAME": "vincod",
+        "USER": "vincod",
+        "PASSWORD": "AVNS_nf_m2wZGRsbuc7QQg9b",
+        'HOST': 'app-aed55472-3929-4d44-ab35-f150fd8dcfc9-do-user-15225862-0.c.db.ondigitalocean.com',
+        "PORT": "25060",
     }
 }
 AUTH_USER_MODEL = 'users.User'
