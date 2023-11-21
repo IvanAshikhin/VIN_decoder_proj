@@ -13,11 +13,11 @@ services:
     depends_on:
       - db
     environment:
-      - POSTGRES_DB=vin_cod
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=5625
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
+      - POSTGRES_DB=vincod
+      - POSTGRES_USER=vincod
+      - POSTGRES_PASSWORD=AVNS_nf_m2wZGRsbuc7QQg9b
+      - POSTGRES_HOST=app-aed55472-3929-4d44-ab35-f150fd8dcfc9-do-user-15225862-0.c.db.ondigitalocean.com
+      - POSTGRES_PORT=25060
 
   db:
     image: postgres:13.0-alpine
