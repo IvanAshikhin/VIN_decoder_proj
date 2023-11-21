@@ -25,7 +25,7 @@ VERIFYING_KEY = ''
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = ["https://vin-decoder-aeahp.ondigitalocean.app"]
 CSRF_TRUSTED_ORIGINS = ['*']
 
 # Application definition
