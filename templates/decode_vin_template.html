@@ -1,18 +1,18 @@
-<!-- decode_vin_template.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decode VIN</title>
 </head>
 <body>
-<h2>Decode VIN</h2>
-
-<form method="post" action="{% url 'new_decode_vin' user_id=user.id %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Decode</button>
-</form>
+<h2 class="header_class">Decode VIN</h2>
+    <form method="post" action="{% url 'new_decode_vin' user_id=user.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Decode</button>
+    </form>
 </body>
 </html>

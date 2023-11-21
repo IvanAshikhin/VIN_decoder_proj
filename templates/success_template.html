@@ -1,16 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decoded Car Information</title>
 </head>
 <body>
-<h2>Decoded Car Information</h2>
+<h2 class="header_class">Decoded Car Information</h2>
 
 <p>VIN Code: {{ car.vin_code }}</p>
 <p>Region: {{ car.region.name }}</p>
 <p>Country: {{ car.country.name }}</p>
 <p>Manufacturer: {{ car.manufacturer.name }}</p>
-<p>Brand: {{ car.brand.name }}</p>
+<p>Brand: {{ car.brand.name }}</p>э
 <p>Year: {{ car.year.year }}</p>
