@@ -6,7 +6,6 @@ from vininfo import Vin
 
 def new_decode_vin(request, user_id):
     form = VinDecodeForm(request.POST or None)
-
     if request.method == 'POST' and form.is_valid():
         vin_code = form.cleaned_data['vin_code']
         vin = Vin(vin_code)
@@ -27,7 +26,5 @@ def new_decode_vin(request, user_id):
                 brand=brand,
                 year=year
             )
-
         return render(request, 'success_template.html', {'car': car, 'user_id': user_id})
-
     return render(request, 'decode_vin_template.html', {'form': form, 'user_id': user_id})
