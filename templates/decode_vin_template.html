@@ -8,11 +8,11 @@
     <title>Decode VIN</title>
 </head>
 <body>
-<h2 class="header_class">Decode VIN</h2>
-<form method="post" action="{% url 'new_decode_vin' user_id=user.id %}"></form>
-{{ form.as_p }}
-<button type="submit">Decode</button>
-</form>
 {% csrf_token %}
+<h2 class="header_class">Decode VIN</h2>
+    <form method="post" action="{% url 'new_decode_vin' user_id=user.id %}"></form>
+        {{ form.as_p }}
+        <button type="submit">Decode</button>
+    </form>
 </body>
 </html>
