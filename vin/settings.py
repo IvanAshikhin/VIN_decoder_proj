@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'decoder',
     'api',
     'drf_spectacular',
+    'corsheaders',
     # 'sslserver'
 
 ]
@@ -92,6 +93,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://vin-decoder-aeahp.ondigitalocean.app",
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
