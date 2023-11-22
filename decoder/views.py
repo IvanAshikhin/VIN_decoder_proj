@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .forms import VinDecodeForm
-from .models import Car, Region, Country, Manufacturer, Brand, Year
+from .models import Car, Region, Country, Manufacturer, Brand, Year, Model
 from vininfo import Vin
+from vin_decoder_nhtsa.decoder import Vin as vin_model
 
 
 def new_decode_vin(request, user_id):
@@ -16,13 +17,15 @@ def new_decode_vin(request, user_id):
             country, _ = Country.objects.get_or_create(name=vin.country)
             manufacturer, _ = Manufacturer.objects.get_or_create(name=vin.manufacturer)
             brand, _ = Brand.objects.get_or_create(name=vin.brand)
+            vin_decoder_info = vin_model(vin_code)
+            model, _ = Model.objects.get_or_create(model=vin_decoder_info.Model)
             year = Year.objects.get_or_create(year=int(vin.years[0]) if vin.years else None)[0]
-
             car = Car.objects.create(
                 vin_code=vin_code,
                 region=region,
                 country=country,
                 manufacturer=manufacturer,
+                model=model,
                 brand=brand,
                 year=year
             )

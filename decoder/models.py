@@ -22,6 +22,10 @@ class Year(models.Model):
     year = models.PositiveIntegerField()
 
 
+class Model(models.Model):
+    model = models.CharField(max_length=50)
+
+
 class Car(models.Model):
     vin_code = models.CharField(max_length=17)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)
@@ -29,3 +33,4 @@ class Car(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    model = models.ForeignKey(Model, on_delete=models.CASCADE)
