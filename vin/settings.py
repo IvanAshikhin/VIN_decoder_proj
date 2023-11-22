@@ -25,8 +25,8 @@ VERIFYING_KEY = ''
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ALLOWED_ORIGINS = ["https://vin-decoder-aeahp.ondigitalocean.app"]
-CSRF_TRUSTED_ORIGINS = ['*']
+CORS_ALLOWED_ORIGINS = ["https://vin-decoder-aeahp.ondigitalocean.app/"]
+CSRF_TRUSTED_ORIGINS = ['https://vin-decoder-aeahp.ondigitalocean.app/']
 
 # Application definition
 
@@ -90,12 +90,13 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
