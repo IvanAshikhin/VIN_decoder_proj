@@ -15,6 +15,8 @@ RUN pip install poetry \
     && poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
 
+RUN pip install django-cors-headers
+
 RUN poetry add gunicorn
 
 COPY . /app/
