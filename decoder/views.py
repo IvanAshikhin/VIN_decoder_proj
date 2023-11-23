@@ -19,13 +19,14 @@ def new_decode_vin(request, user_id):
             brand, _ = Brand.objects.get_or_create(name=vin.brand)
             vin_decoder_info = vin_model(vin_code)
             model, _ = Model.objects.get_or_create(model=vin_decoder_info.Model)
+            brand.model = model
+            brand.save()
             year = Year.objects.get_or_create(year=int(vin.years[0]) if vin.years else None)[0]
             car = Car.objects.create(
                 vin_code=vin_code,
                 region=region,
                 country=country,
                 manufacturer=manufacturer,
-                model=model,
                 brand=brand,
                 year=year
             )
