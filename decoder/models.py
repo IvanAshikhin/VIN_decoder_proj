@@ -15,7 +15,7 @@ class Manufacturer(models.Model):
 
 
 class Model(models.Model):
-    model = models.CharField(max_length=50)
+    model = models.CharField(max_length=50, null=True, blank=True)
 
 
 class Brand(models.Model):
