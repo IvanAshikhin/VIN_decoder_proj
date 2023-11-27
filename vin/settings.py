@@ -123,14 +123,25 @@ WSGI_APPLICATION = 'vin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "db",
+#         "USER": "db",
+#         "PASSWORD": "AVNS_o6T4lkDp5xS6KKONSNx",
+#         'HOST': 'app-14aaf0aa-650a-4512-a0a9-1fecddb2ed67-do-user-15225862-0.c.db.ondigitalocean.com',
+#         "PORT": "25060",
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "db",
-        "USER": "db",
-        "PASSWORD": "AVNS_o6T4lkDp5xS6KKONSNx",
-        'HOST': 'app-14aaf0aa-650a-4512-a0a9-1fecddb2ed67-do-user-15225862-0.c.db.ondigitalocean.com',
-        "PORT": "25060",
+        "NAME": "vin",
+        "USER": "postgres",
+        "PASSWORD": "5625",
+        'HOST': 'localhost',
+        "PORT": "",
     }
 }
 AUTH_USER_MODEL = 'users.User'

@@ -30,4 +30,4 @@ class YearCodeAdmin(admin.ModelAdmin):
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('vin_code',)
+    list_display = ('region', 'brand', 'country', 'manufacturer', 'year')
