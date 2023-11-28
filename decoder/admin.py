@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from decoder.models import Region, Country, Year, Brand, Car
+from decoder.models import Brand, Car, Country, Region, Year
 
 
 @admin.register(Region)

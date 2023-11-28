@@ -1,6 +1,7 @@
-from vininfo import Vin
 from vin_decoder_nhtsa.decoder import Vin as VinModel
-from .models import Car, Region, Country, Brand, Year, Model
+from vininfo import Vin
+
+from .models import Brand, Car, Country, Model, Region, Year
 
 
 def get_vin_symbol(vin_code: str, start_index: int, end_index: int) -> str:

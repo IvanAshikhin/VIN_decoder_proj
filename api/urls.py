@@ -1,6 +1,7 @@
 from django.urls import path
+
 from api.decoder.views import DecodeVinAPIView
-from api.users.views import RegisterUserView, UserListAPIView, LoginUserView
+from api.users.views import RegisterUserView, UserListAPIView
 
 urlpatterns = [
     path("users/", UserListAPIView.as_view(), name="user-list"),

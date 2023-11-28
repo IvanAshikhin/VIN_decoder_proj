@@ -1,4 +1,4 @@
-# Vin Decoder 
+# Vin Decoder
 ## This program takes the vehicle's VIN code and decodes it, showing information such as: region of manufacture, country of the vehicle, year of manufacture, vehicle make.
 ![ссылка_на_изображение](https://dmv-permit-test.com/images/vin-decoder.png)
 
@@ -35,7 +35,3 @@
 
 # Contributors
 https://github.com/IvanAshikhin
-
-
-
-

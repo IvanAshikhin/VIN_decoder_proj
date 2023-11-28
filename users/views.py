@@ -1,9 +1,10 @@
 from django.contrib.auth import login
+from django.core.cache import cache
 from django.http import HttpRequest, HttpResponse
+from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.shortcuts import render, redirect
-from django.core.cache import cache
+
 from api.users.serializers import LoginSerializer
 
 

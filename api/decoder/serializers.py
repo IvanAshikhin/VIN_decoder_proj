@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from decoder.models import Car, Country, Year, Brand, Model, Region
+
+from decoder.models import Brand, Car, Country, Model, Region, Year
 
 
 class CountrySerializer(serializers.ModelSerializer):

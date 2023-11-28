@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIRequestFactory
+
 from api.users.serializers import RegistrationSerializer
 from api.users.views import LoginUserView
 from decoder.functions import get_country, get_vin_symbol
