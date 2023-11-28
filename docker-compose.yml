@@ -15,14 +15,14 @@ services:
     environment:
       - POSTGRES_DB=vin
       - POSTGRES_USER=vin
-      - POSTGRES_PASSWORD=AVNS_NEKTfBE73pqxvihfW7t
-      - POSTGRES_HOST=app-c74d3a38-13c8-48a9-ba14-e53c8e815a65-do-user-15225862-0.c.db.ondigitalocean.com
+      - POSTGRES_PASSWORD=AVNS__il6u77P7fWyCukOekY
+      - POSTGRES_HOST=app-4eaf6eea-9cfd-4cf4-9fab-ac32fbe7fab1-do-user-15225862-0.c.db.ondigitalocean.com
       - POSTGRES_PORT=25060
 
   db:
     image: postgres:13.0-alpine
     environment:
-      POSTGRES_DB: vin_cod
+      POSTGRES_DB: vin
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 5625
     ports:

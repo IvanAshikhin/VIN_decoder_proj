@@ -120,8 +120,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "vin",
         "USER": "vin",
-        "PASSWORD": "AVNS_NEKTfBE73pqxvihfW7t",
-        "HOST": "app-c74d3a38-13c8-48a9-ba14-e53c8e815a65-do-user-15225862-0.c.db.ondigitalocean.com",
+        "PASSWORD": "AVNS__il6u77P7fWyCukOekY",
+        "HOST": "app-4eaf6eea-9cfd-4cf4-9fab-ac32fbe7fab1-do-user-15225862-0.c.db.ondigitalocean.com",
         "PORT": "25060",
     }
 }
