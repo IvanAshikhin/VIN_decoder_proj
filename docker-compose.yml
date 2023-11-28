@@ -13,10 +13,10 @@ services:
     depends_on:
       - db
     environment:
-      - POSTGRES_DB=vincod
-      - POSTGRES_USER=vincod
-      - POSTGRES_PASSWORD=AVNS_nf_m2wZGRsbuc7QQg9b
-      - POSTGRES_HOST=app-aed55472-3929-4d44-ab35-f150fd8dcfc9-do-user-15225862-0.c.db.ondigitalocean.com
+      - POSTGRES_DB=vin
+      - POSTGRES_USER=vin
+      - POSTGRES_PASSWORD=AVNS_NEKTfBE73pqxvihfW7t
+      - POSTGRES_HOST=app-c74d3a38-13c8-48a9-ba14-e53c8e815a65-do-user-15225862-0.c.db.ondigitalocean.com
       - POSTGRES_PORT=25060
 
   db:
