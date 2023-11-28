@@ -8,7 +8,7 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.CharField()
     password = serializers.CharField()
 
-    def validate(self, data):
+    def validate(self, data) -> User:
         user = authenticate(**data)
         if user and user.is_active:
             return user
@@ -20,11 +20,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password']
+        fields = ["email", "password"]
 
-    def create(self, validated_data):
+    def create(self, validated_data) -> User:
         user = User.objects.create_user(
-            email=validated_data['email'],
-            password=validated_data['password']
+            email=validated_data["email"], password=validated_data["password"]
         )
         return user

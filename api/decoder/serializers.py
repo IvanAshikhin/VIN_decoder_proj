@@ -1,30 +1,38 @@
 from rest_framework import serializers
+from decoder.models import Car, Country, Year, Brand, Model, Region
 
 
-class RegionSerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=50)
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = "__all__"
 
 
-class CountrySerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=50)
+class YearSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Year
+        fields = "__all__"
 
 
-class ManufacturerSerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=50)
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = "__all__"
 
 
-class BrandSerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=50)
+class ModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Model
+        fields = "__all__"
 
 
-class YearSerializer(serializers.Serializer):
-    year = serializers.IntegerField(min_value=0)
+class RegionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Region
+        fields = "__all__"
 
 
-class CarSerializer(serializers.Serializer):
-    vin_code = serializers.CharField(max_length=17)
-    region = RegionSerializer()
-    country = CountrySerializer()
-    manufacturer = ManufacturerSerializer()
-    brand = BrandSerializer()
-    year = YearSerializer()
+class CarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Car
+        fields = "__all__"

@@ -2,8 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from vininfo import Vin
-from decoder.models import Region, Country, Manufacturer, Brand, Year, Car
+from decoder.functions import get_car
 from .serializers import CarSerializer
 from drf_spectacular.utils import extend_schema
 
@@ -27,30 +26,21 @@ class DecodeVinAPIView(APIView):
         },
         responses={200: CarSerializer},
     )
-    def post(self, request, *args, **kwargs):
-        vin_code = request.data.get('vin_code')
-
-        if not vin_code:
-            return Response({'error': 'Vin code is required'}, status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            car = Car.objects.get(vin_code=vin_code)
-        except Car.DoesNotExist:
-            vin = Vin(vin_code)
-            region, _ = Region.objects.get_or_create(name=vin.region)
-            country, _ = Country.objects.get_or_create(name=vin.country)
-            manufacturer, _ = Manufacturer.objects.get_or_create(name=vin.manufacturer)
-            brand, _ = Brand.objects.get_or_create(name=vin.brand)
-            year = Year.objects.get_or_create(year=int(vin.years[0]) if vin.years else None)[0]
-
-            car = Car.objects.create(
-                vin_code=vin_code,
-                region=region,
-                country=country,
-                manufacturer=manufacturer,
-                brand=brand,
-                year=year
+    def post(self, request):
+        vin_code = self.request.data.get("vin_code")
+        if vin_code:
+            car = get_car(vin_code)
+            if car:
+                serialized_car = CarSerializer(car).data
+                return Response(
+                    {"car": serialized_car, "user_id": self.request.user.id}
+                )
+            else:
+                return Response(
+                    {"error": "Car not found for the provided VIN code"},
+                    status=status.HTTP_404_NOT_FOUND,
+                )
+        else:
+            return Response(
+                {"error": "VIN code not provided"}, status=status.HTTP_400_BAD_REQUEST
             )
-
-        serializer = self.serializer_class(car)
-        return Response(serializer.data, status=status.HTTP_200_OK)

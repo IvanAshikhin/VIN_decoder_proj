@@ -7,14 +7,14 @@ from api.users.serializers import LoginSerializer, RegistrationSerializer
 from users.models import User
 import logging
 
-logger = logging.getLogger('main')
+logger = logging.getLogger("main")
 
 
-class UserAPIView(APIView):
+class UserListAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        logging.error('Error here')
+    def get_queryset(self) -> User:
+        logging.error("Error here")
         return User.objects.all()
 
     def get(self, request, *args, **kwargs):
@@ -37,8 +37,8 @@ class LoginUserView(APIView):
         refresh_token = str(refresh)
 
         response_data = {
-            'access_token': access_token,
-            'refresh_token': refresh_token,
+            "access_token": access_token,
+            "refresh_token": refresh_token,
         }
 
         return Response(data=response_data, status=status.HTTP_200_OK)
