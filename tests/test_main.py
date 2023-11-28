@@ -3,11 +3,10 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIRequestFactory
-
 from api.users.serializers import RegistrationSerializer
 from api.users.views import LoginUserView
-from decoder.functions import get_country, get_vin_symbol
-from decoder.models import Country
+from decoder.functions import get_country, get_brand
+from decoder.models import Country, Brand
 
 User = get_user_model()
 
@@ -53,16 +52,14 @@ def test_login_user_view():
 
 
 @pytest.mark.django_db
-def test_get_country_existing_country(mocker):
-    mocker.patch(get_vin_symbol, return_value="US")
+def test_get_country_existing_country():
     existing_country = Country.objects.create(code="US", name="United States")
-    result = get_country("1FMYU60E41U0U5211")
-    assert result == existing_country
+    result_country = get_country(existing_country.code)
+    assert result_country == existing_country
 
 
 @pytest.mark.django_db
-def test_get_country_new_country(mocker):
-    mocker.patch("your_other_module.get_vin_symbol", return_value="CA")
-    result = get_country("your_valid_vin")
-    new_country = Country.objects.get(code="CA")
-    assert result == new_country
+def test_get_brand_existing_brand():
+    brand = Brand.objects.create(code="LR", name="Brand (Honda)")
+    result_brand = get_brand(brand.code)
+    assert result_brand == brand
