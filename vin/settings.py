@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-9=!0i_7yayf4+j^6g%x3z04v=bst^zy3r97(@)fo3iu*4k6%&^"
 VERIFYING_KEY = ""
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 CORS_ALLOWED_ORIGINS = ["https://vin-decoder-aeahp.ondigitalocean.app"]
@@ -115,27 +115,27 @@ WSGI_APPLICATION = "vin.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "vin",
-        "USER": "vin",
-        "PASSWORD": "AVNS__il6u77P7fWyCukOekY",
-        "HOST": "app-4eaf6eea-9cfd-4cf4-9fab-ac32fbe7fab1-do-user-15225862-0.c.db.ondigitalocean.com",
-        "PORT": "25060",
-    }
-}
-
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "vin_decoder",
-#         "USER": "postgres",
-#         "PASSWORD": "5625",
-#         "HOST": "localhost",
-#         "PORT": "",
+#         "NAME": "vin",
+#         "USER": "vin",
+#         "PASSWORD": "AVNS__il6u77P7fWyCukOekY",
+#         "HOST": "app-4eaf6eea-9cfd-4cf4-9fab-ac32fbe7fab1-do-user-15225862-0.c.db.ondigitalocean.com",
+#         "PORT": "25060",
 #     }
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "vin_decoder",
+        "USER": "postgres",
+        "PASSWORD": "5625",
+        "HOST": "localhost",
+        "PORT": "",
+    }
+}
 AUTH_USER_MODEL = "users.User"
 
 # Password validation

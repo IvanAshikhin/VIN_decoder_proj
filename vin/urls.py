@@ -24,12 +24,10 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-urlpatterns = (
-    [
+if settings.DEBUG:
+    urlpatterns = [
         path("admin/", admin.site.urls),
-        path("decoder/", include("decoder.urls")),
         path("api/", include("api.urls")),
-        path("", include("users.urls")),
         path("schema/", SpectacularAPIView.as_view(), name="schema"),
         path(
             "api/swagger/",
@@ -42,6 +40,12 @@ urlpatterns = (
             name="redoc",
         ),
     ]
-    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-)
+else:
+    urlpatterns = []
+
+urlpatterns += [
+    path("decoder/", include("decoder.urls")),
+    path("", include("users.urls")),
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
