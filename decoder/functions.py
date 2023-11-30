@@ -9,7 +9,7 @@ def get_vin_symbol(vin_code: str, start_index: int, end_index: int) -> str:
 
 
 def get_country(code: str) -> Country:
-    country_code = get_vin_symbol(code, 0, 2)
+    country_code = get_vin_symbol(code, 0, 1)
     existing_country = Country.objects.filter(code=country_code).first()
     if existing_country:
         return existing_country
@@ -25,7 +25,7 @@ def get_brand(code: str) -> Brand:
 
 
 def get_model(code: str) -> Model:
-    model_code = get_vin_symbol(code, 3, 6)
+    model_code = get_vin_symbol(code, 4, 7)
     existing_model = Model.objects.filter(code=model_code).first()
     if existing_model:
         return existing_model
