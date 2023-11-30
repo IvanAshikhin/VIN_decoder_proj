@@ -9,10 +9,11 @@
 </head>
 <body>
 <h2 class="header_class">Decoded Car Information</h2>
-
-<p>VIN Code: {{ vin_code }}</p>
-<p>Region: {{ car.region.name }}</p>
-<p>Country: {{ car.country.name }}</p>
-<p>Brand: {{ car.brand.name }}</p>
-<p>Model: {{ car.model.name }}</p>
-<p>Year: {{ car.year.year }}</p>
+<div class="container">
+    <p class="result">VIN Code: <span class="change_color">{{ vin_code }}</span></p>
+    <p class="result">Region: <span class="change_color">{{ car.region.name }}</span></p>
+    <p class="result">Country: <span class="change_color">{{ car.country.name }}</span></p>
+    <p class="result">Brand: <span class="change_color">{{ car.brand.name }}</span></p>
+    <p class="result">Model: <span class="change_color">{{ car.model.name }}</span></p>
+    <p class="result">Year: <span class="change_color">{{ car.year.year }}</span></p>
+</div>
