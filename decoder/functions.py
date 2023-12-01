@@ -17,7 +17,7 @@ def get_country(code: str) -> Country:
 
 
 def get_brand(code: str) -> Brand:
-    brand_code = get_vin_symbol(code, 2, 4)
+    brand_code = get_vin_symbol(code, 2, 3)
     existing_brand = Brand.objects.filter(code=brand_code).first()
     if existing_brand:
         return existing_brand
@@ -36,7 +36,7 @@ def get_model(code: str) -> Model:
 
 
 def get_year(code: str) -> Year:
-    year_code = get_vin_symbol(code, 9, 11)
+    year_code = get_vin_symbol(code, 9, 10)
     existing_year = Year.objects.filter(code=year_code).first()
     if existing_year:
         return existing_year
@@ -62,10 +62,10 @@ def get_car(vin_code: str) -> Car:
     try:
         car = Car.objects.get(
             region__name=Vin(vin_code).region,
-            country__name=get_country(vin_code),
-            brand__name=get_brand(vin_code),
-            model__name=get_model(vin_code),
-            year__year=get_year(vin_code),
+            country=get_country(vin_code),
+            brand=get_brand(vin_code),
+            model=get_model(vin_code),
+            year=get_year(vin_code),
         )
         return car
     except Car.DoesNotExist:

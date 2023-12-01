@@ -1,0 +1,2 @@
+class VinException(Exception):
+    pass

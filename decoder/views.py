@@ -2,6 +2,7 @@ from django.http import HttpRequest
 from django.http.response import HttpResponse
 from django.shortcuts import render
 
+from .exception import VinException
 from .forms import VinDecodeForm
 from .functions import get_car
 
@@ -10,6 +11,8 @@ def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
     form = VinDecodeForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         vin_code = form.cleaned_data["vin_code"]
+        if len(vin_code) != 17:
+            raise VinException("VIN code must have exactly 17 characters.")
         car = get_car(vin_code)
         return render(
             request,
