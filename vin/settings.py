@@ -31,6 +31,7 @@ CSRF_TRUSTED_ORIGINS = ["https://vin-decoder-aeahp.ondigitalocean.app"]
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

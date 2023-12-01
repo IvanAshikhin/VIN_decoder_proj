@@ -26,7 +26,6 @@ from drf_spectacular.views import (
 
 if settings.DEBUG:
     urlpatterns = [
-        path("admin/", admin.site.urls),
         path("api/", include("api.urls")),
         path("schema/", SpectacularAPIView.as_view(), name="schema"),
         path(
@@ -46,6 +45,7 @@ else:
 urlpatterns += [
     path("decoder/", include("decoder.urls")),
     path("", include("users.urls")),
+    path("nezahodi/", admin.site.urls),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
