@@ -4,7 +4,6 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from rest_framework.decorators import api_view
 from rest_framework_simplejwt.tokens import RefreshToken
-
 from api.users.serializers import LoginSerializer
 
 
@@ -27,3 +26,7 @@ def login_user(request: HttpRequest) -> HttpResponse:
             request.session["access_token"] = access_token
             return redirect("new_decode_vin", user_id=user.id)
     return render(request, "index.html")
+
+
+def error_404(request, exception):
+    return render(request, "404_page.html", status=404)

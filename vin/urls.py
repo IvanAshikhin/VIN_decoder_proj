@@ -23,6 +23,7 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
+from users.views import error_404
 
 if settings.DEBUG:
     urlpatterns = [
@@ -49,3 +50,5 @@ urlpatterns += [
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = error_404
