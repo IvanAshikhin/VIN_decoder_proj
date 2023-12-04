@@ -17,7 +17,7 @@ def get_country(code: str) -> Country:
 
 
 def get_brand(code: str) -> Brand:
-    brand_code = get_vin_symbol(code, 2, 3)
+    brand_code = get_vin_symbol(code, 2, 4)
     existing_brand = Brand.objects.filter(code=brand_code).first()
     if existing_brand:
         return existing_brand
