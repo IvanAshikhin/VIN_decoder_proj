@@ -28,7 +28,7 @@ class DecodeVinAPIView(APIView):
         },
         responses={200: CarSerializer},
     )
-    def post(self, request):
+    def post(self, request) -> Response:
         vin_code = self.request.data.get("vin_code")
         if not vin_code or len(vin_code) != 17:
             return Response(

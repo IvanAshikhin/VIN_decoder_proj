@@ -19,7 +19,7 @@ class UserListAPIView(APIView):
         logging.error("Error here")
         return User.objects.all()
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs) -> Response:
         users = self.get_queryset()
         serializer = RegistrationSerializer(users, many=True)
         return Response(serializer.data)
@@ -29,7 +29,7 @@ class LoginUserView(APIView):
     permission_classes = [AllowAny]
     serializer_class = LoginSerializer
 
-    def post(self, request):
+    def post(self, request) -> Response:
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
@@ -50,7 +50,7 @@ class RegisterUserView(APIView):
     permission_classes = [AllowAny]
     serializer_class = RegistrationSerializer
 
-    def post(self, request):
+    def post(self, request) -> Response:
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
