@@ -5,6 +5,8 @@ from django.shortcuts import render
 from .exception import VinException
 from .forms import VinDecodeForm
 from .functions import get_car
+from .models import RequestLog
+from .utils import vin_search_count_with_date, user_vin_search_count_with_date
 
 
 def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
@@ -14,6 +16,8 @@ def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
         if len(vin_code) != 17:
             raise VinException("VIN code must have exactly 17 characters.")
         car = get_car(vin_code)
+        request_log = RequestLog(vin=vin_code, car=car, user=request.user)
+        request_log.save()
         return render(
             request,
             "success_template.html",
@@ -22,3 +26,14 @@ def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
     return render(
         request, "decode_vin_template.html", {"form": form, "user_id": user_id}
     )
+
+
+def car_dashboard_view(request):
+    user_id = request.user.id
+    cars = vin_search_count_with_date()
+    users = user_vin_search_count_with_date(user_id)
+    context = {
+        "cars": cars,
+        "users": users,
+    }
+    return render(request, "dashboard.html", context)

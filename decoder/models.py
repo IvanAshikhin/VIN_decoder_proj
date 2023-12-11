@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+
+from users.models import User
 
 
 class Country(models.Model):
@@ -91,3 +94,21 @@ class Car(models.Model):
     class Meta:
         verbose_name = "Автомобиль"
         verbose_name_plural = "Автомобиль"
+
+
+class RequestLog(models.Model):
+    vin = models.CharField(max_length=17, null=False, verbose_name="Вин Код")
+    car = models.ForeignKey(
+        Car, on_delete=models.CASCADE, null=False, verbose_name="Автомобиль"
+    )
+    created_at = models.DateTimeField(default=timezone.now, verbose_name="Дата и время")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=False, verbose_name="Пользователь"
+    )
+
+    def __str__(self):
+        return f"{self.vin} {self.car} {self.created_at} {self.user}"
+
+    class Meta:
+        verbose_name = "Статистика"
+        verbose_name_plural = "Статистика"

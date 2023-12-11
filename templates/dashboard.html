@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <title>Search Statistics</title>
+</head>
+<body>
+<h1>Search Statistics</h1>
+
+<h2>Car Search Statistics</h2>
+<ul>
+    {% for car in cars %}
+        <li>
+            Car: {{ car }}<br>
+            Total VIN Searches: {{ car.total_vin_search_count }}<br>
+            Number of decodes Users: {{ car.distinct_user_count }}<br>
+            Last Search Date: {{ car.last_search_date }}<br>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>User Search Statistics</h2>
+<ul>
+    {% for user in users %}
+        <li>
+            User: {{ user.email }}<br>
+            Total VIN Searches: {{ user.total_vin_search_count }}<br>
+            Cars decoded: {{ user.distinct_car_count }}<br>
+            Last Search Date: {{ user.last_search_date }}<br>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
