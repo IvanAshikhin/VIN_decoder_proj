@@ -107,3 +107,37 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #1d2124; /* Darker gray on hover */
 }
+
+.header h1 {
+    color: #333;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.card strong {
+    color: #555;
+}
+
+.card h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    margin-bottom: 5px;
+}

@@ -1,35 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
-    <title>Search Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Search Statistics with Chart.js</title>
 </head>
 <body>
-<h1>Search Statistics</h1>
+    <div class="container">
+        <h1>Car Statistics</h1>
 
-<h2>Car Search Statistics</h2>
-<ul>
-    {% for car in cars %}
-        <li>
-            Car: {{ car }}<br>
-            Total VIN Searches: {{ car.total_vin_search_count }}<br>
-            Number of decodes Users: {{ car.distinct_user_count }}<br>
-            Last Search Date: {{ car.last_search_date }}<br>
-        </li>
-    {% endfor %}
-</ul>
+        <div class="section">
+            <canvas id="carChart" width="400" height="200"></canvas>
+            <script>
+                var carData = {
+                    labels: [{% for car in cars %}'{{ car.brand }} {{ car.model.name }}',{% endfor %}],
+                    datasets: [{
+                        label: 'Total VIN Searches',
+                        data: [{% for car in cars %}{{ car.total_vin_search_count }},{% endfor %}],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                };
 
-<h2>User Search Statistics</h2>
-<ul>
-    {% for user in users %}
-        <li>
-            User: {{ user.email }}<br>
-            Total VIN Searches: {{ user.total_vin_search_count }}<br>
-            Cars decoded: {{ user.distinct_car_count }}<br>
-            Last Search Date: {{ user.last_search_date }}<br>
-        </li>
-    {% endfor %}
-</ul>
+                var carCtx = document.getElementById('carChart').getContext('2d');
+                var carChart = new Chart(carCtx, {
+                    type: 'bar',
+                    data: carData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="section">
+            <h2>User Search Statistics</h2>
+            <canvas id="userChart" width="400" height="200"></canvas>
+            <script>
+                var userData = {
+                    labels: [{% for user in users %}'{{ user.email }} ({{ user.last_search_date }}) - {{ user.total_vin_search_count }} cars',{% endfor %}],
+                    datasets: [{
+                        label: 'Total VIN Searches',
+                        data: [{% for user in users %}{{ user.total_vin_search_count }},{% endfor %}],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                var userCtx = document.getElementById('userChart').getContext('2d');
+                var userChart = new Chart(userCtx, {
+                    type: 'bar',
+                    data: userData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
 </body>
 </html>

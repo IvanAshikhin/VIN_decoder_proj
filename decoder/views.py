@@ -29,9 +29,8 @@ def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
 
 
 def car_dashboard_view(request):
-    user_id = request.user.id
     cars = vin_search_count_with_date()
-    users = user_vin_search_count_with_date(user_id)
+    users = user_vin_search_count_with_date()
     context = {
         "cars": cars,
         "users": users,
