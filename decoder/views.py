@@ -6,7 +6,11 @@ from .exception import VinException
 from .forms import VinDecodeForm
 from .functions import get_car
 from .models import RequestLog
-from .utils import vin_search_count_with_date, user_vin_search_count_with_date
+from .utils import (
+    vin_search_count_with_date,
+    user_vin_search_count_with_date,
+    vin_search_count,
+)
 
 
 def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
@@ -28,11 +32,13 @@ def decode_vin_view(request: HttpRequest, user_id: int) -> HttpResponse:
     )
 
 
-def car_dashboard_view(request):
-    cars = vin_search_count_with_date()
+def car_dashboard_view(request: HttpRequest) -> HttpResponse:
+    cars = vin_search_count()
     users = user_vin_search_count_with_date()
+    vin_search_stats = vin_search_count_with_date()
     context = {
         "cars": cars,
         "users": users,
+        "vin_search_stats": vin_search_stats,
     }
     return render(request, "dashboard.html", context)
