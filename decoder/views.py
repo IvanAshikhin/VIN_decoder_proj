@@ -1,7 +1,10 @@
 from django.http import HttpRequest
 from django.http.response import HttpResponse
 from django.shortcuts import render
+from django.urls import reverse
+from paypal.standard.forms import PayPalPaymentsForm
 
+from vin import settings
 from .exception import VinException
 from .forms import VinDecodeForm
 from .functions import get_car
@@ -42,3 +45,25 @@ def car_dashboard_view(request: HttpRequest) -> HttpResponse:
         "vin_search_stats": vin_search_stats,
     }
     return render(request, "dashboard.html", context)
+
+
+def paypal_donate_payment_view(request):
+    paypal_dict = {
+        "business": settings.PAYPAL_RECEIVER_EMAIL,
+        "amount": "1.00",
+        "item_name": "Донат",
+        "currency_code": "USD",
+        "notify_url": request.build_absolute_uri(reverse("paypal-ipn")),
+        "return_url": request.build_absolute_uri(reverse("payment_success")),
+        "cancel_return": request.build_absolute_uri(reverse("payment_cancel")),
+    }
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    return render(request, "payment.html", {"form": form})
+
+
+def payment_success_view(request):
+    return render(request, "payment-success.html")
+
+
+def payment_failed_view(request):
+    return render(request, "payment-failed.html")

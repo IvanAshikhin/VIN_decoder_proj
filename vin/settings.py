@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     "api",
     "drf_spectacular",
     "corsheaders",
+    "django_extensions",
+    "paypal.standard.ipn",
 ]
+
+PAYPAL_RECEIVER_EMAIL = "sb-xvfoe28580969@personal.example.com"
+PAYPAL_TEST = True
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
@@ -163,7 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru-ru"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Almaty"
 
 USE_I18N = True
 

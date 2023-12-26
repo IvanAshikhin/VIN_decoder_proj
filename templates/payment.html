@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <h1>Payment</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Pay with PayPal</button>
+</form>
+</body>
+</html>

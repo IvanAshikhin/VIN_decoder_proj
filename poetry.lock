@@ -284,6 +284,22 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-paypal"
+version = "2.0"
+description = "A pluggable Django application for integrating PayPal Payments Standard or Payments Pro"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-paypal-2.0.tar.gz", hash = "sha256:0d19ad0fc66a88a1ea367ebb6c1ff1cd2ce221bb96f8085904fc969be4c34145"},
+    {file = "django_paypal-2.0-py3-none-any.whl", hash = "sha256:dc0bd8eadebfb274ba32cb94704d795dd61ec1f7abf9d973b5af8536f0e46d13"},
+]
+
+[package.dependencies]
+Django = ">=2.2"
+pytz = ">=2015.4"
+requests = ">=2.5.3"
+
+[[package]]
 name = "django-sslserver"
 version = "0.22"
 description = "An SSL-enabled development server for Django"
@@ -1308,4 +1324,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "c16103353da656fb7ee9a3cfdf241bc835c8bf59099457b042da1e806a1ef6c1"
+content-hash = "3b5fbe3cb929c513e08fd131938b5580266e423d5881a2e46b4a6625a916c3f9"
