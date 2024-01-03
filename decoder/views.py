@@ -47,7 +47,7 @@ def car_dashboard_view(request: HttpRequest) -> HttpResponse:
     return render(request, "dashboard.html", context)
 
 
-def paypal_donate_payment_view(request):
+def paypal_donate_payment_view(request: HttpRequest) -> HttpResponse:
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": "1.00",
@@ -61,9 +61,9 @@ def paypal_donate_payment_view(request):
     return render(request, "payment.html", {"form": form})
 
 
-def payment_success_view(request):
+def payment_success_view(request: HttpRequest) -> HttpResponse:
     return render(request, "payment-success.html")
 
 
-def payment_failed_view(request):
+def payment_failed_view(request: HttpRequest) -> HttpResponse:
     return render(request, "payment-failed.html")
